@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,20 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return 'Olá, seja bem vindo ao curso!!!';
-});
+Route::get('/', 'PrincipalController@principal');
 
-Route::get('/sobre-nos', function () {
-    return 'Sobre Nós';
-});
+Route::get('/sobre-nos', 'SobrenosController@sobrenos');
 
-Route::get('/contato', function () {
-    return 'Contato';
-});
+Route::get('/contato','ContatoController@contato');
 
 // O primeiro a ser declarado é o caminho, o segundo é o callback que define o direcionamento
-Route::get($uri, $callback);
+// Route::get($uri, $callback);
 
 /* Principais verbos http para controle de aplicação
     get
