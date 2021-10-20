@@ -13,25 +13,28 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', 'PrincipalController@principal')->name('site.index');
 
-Route::get('/', 'PrincipalController@principal');
+Route::get('/sobre-nos', 'SobrenosController@sobrenos')->name('site.sobrenos');
 
-Route::get('/sobre-nos', 'SobrenosController@sobrenos');
+Route::get('/contato','ContatoController@contato')->name('site.contato');
 
-Route::get('/contato','ContatoController@contato');
-
-Route::get('/login', function ($id) {
+Route::get('/login', function() {
     return 'Login';
-});
+})->name('site.login');
 
-Route::get('/clientes', function ($id) {
-    return 'Clientes';
-});
+// agrupamento das rotas app
+Route::prefix('/app')->group(function(){
+    Route::get('/clientes', function() {
+        return 'Clientes';
+    })->name('app.clientes');
 
-Route::get('/foroecedores', function ($id) {
-    return 'Fornecedores';
-});
+    Route::get('/fornecedores', function() {
+        return 'Fornecedores';
+    })->name('app.fornecedores');
 
-Route::get('/produtos', function ($id) {
-    return 'Produtos';
+    Route::get('/produtos', function() {
+        return 'Produtos';
+    })->name('app.produtos');
+
 });
