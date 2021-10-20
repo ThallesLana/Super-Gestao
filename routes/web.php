@@ -19,3 +19,19 @@ Route::get('/', 'PrincipalController@principal');
 Route::get('/sobre-nos', 'SobrenosController@sobrenos');
 
 Route::get('/contato','ContatoController@contato');
+
+Route::get('/login', function ($id) {
+    return 'Login';
+});
+
+Route::get('/clientes', function ($id) {
+    return 'Clientes';
+});
+
+Route::get('/foroecedores', function ($id) {
+    return 'Fornecedores';
+});
+
+Route::get('/produtos', function ($id) {
+    return 'Produtos';
+});
