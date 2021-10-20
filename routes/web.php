@@ -23,10 +23,13 @@ Route::get('/contato','ContatoController@contato');
 
 // espera de parametros por rota
 // ? significa que o parametro é opcional
-Route::get('/contato/{nome?}/{categoria?}/{assunto?}/{mensagem?}',
-    function(string $nome = 'Desconhecido', $categoria = 'Informação', $assunto = 'Contato', $mensagem = 'mensagem não informada') {
-    echo "Estamos aqui: $nome - $categoria - $assunto - $mensagem";
-});
+Route::get('/contato/{nome}/{categoria_id}',
+    function(string $nome = 'Desconhecido', int $categoria_id = 1 // 1 = Informação
+    ) {
+    echo "Estamos aqui: $nome - $categoria_id";
+    // utilizando o where para determinar configurações especificas para o parametro categoria_id no qual ele define
+    // que o parametro deve receber numeros de 0 a 9 e tambem que ele tem que possui pelo menos 1 dado sendo passado ao contrario ele vai rejeitar a request
+})->where('categoria_id', '[0-9]+')->where('nome', '[A-Za-z]+');
 
 // O primeiro a ser declarado é o caminho, o segundo é o callback que define o direcionamento
 // Route::get($uri, $callback);
