@@ -38,3 +38,15 @@ Route::prefix('/app')->group(function(){
     })->name('app.produtos');
 
 });
+
+Route::get('/rota1', function () {
+    echo 'Rota 1';
+})->name('site.rota1');
+
+// redirect pela function de callback
+Route::get('/rota2', function () {
+    return redirect()->route('site.rota1');
+})->name('site.rota2');
+
+// redirect simples
+// Route::redirect('/rota2', 'rota1');
